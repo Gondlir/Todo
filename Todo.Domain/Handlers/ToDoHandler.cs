@@ -7,7 +7,11 @@ using Todo.Domain.Repositories;
 
 namespace Todo.Domain.Handlers
 {
-    public class ToDoHandler : Notifiable, IHandler<CreateToDoCommands>, IHandler<UpdateCommand>
+    public class ToDoHandler : Notifiable,
+    IHandler<CreateToDoCommands>,
+    IHandler<UpdateCommand>,
+    IHandler<MarkAsDoneCommand>,
+    IHandler<MarkAsUndoneCommand>
     {
         private readonly IRepository _repository;
 
@@ -35,6 +39,36 @@ namespace Todo.Domain.Handlers
             var todo = _repository.GetById(command.Id, command.User);
 
             todo.UpdateTitle(command.Title);
+
+            _repository.Update(todo);
+
+            return new GenericCommandResult(true, "Tarefa salva", command.Notifications);
+        }
+
+        public ICommandResult Handle(MarkAsDoneCommand command)
+        {
+            command.Validate();
+            if (command.Invalid)
+                return new GenericCommandResult(false, "Tarefa errada !", command.Notifications);
+
+            var todo = _repository.GetById(command.Id, command.User);
+
+            todo.MarkAsDone();
+
+            _repository.Update(todo);
+
+            return new GenericCommandResult(true, "Tarefa salva", command.Notifications);
+        }
+
+        public ICommandResult Handle(MarkAsUndoneCommand command)
+        {
+            command.Validate();
+            if (command.Invalid)
+                return new GenericCommandResult(false, "Tarefa errada !", command.Notifications);
+
+            var todo = _repository.GetById(command.Id, command.User);
+
+            todo.MarkAsUnDone();
 
             _repository.Update(todo);
 
