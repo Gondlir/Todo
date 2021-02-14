@@ -6,19 +6,23 @@ namespace Todo.Domain.CommandTests
     [TestClass]
     public class CreateCommandTests
     {
+        private readonly CreateToDoCommands _invalidCommand = new CreateToDoCommands("", "", DateTime.Now);
+        private readonly CreateToDoCommands _validCommand = new CreateToDoCommands("Teste Exemplo", "DrManhattan", DateTime.Now);
+
+        public CreateCommandTests()
+        {
+            _invalidCommand.Validate();
+            _validCommand.Validate();
+        }
         [TestMethod]
         public void GiveIvalidImput()
         {
-            var command = new CreateToDoCommands("op", "op", DateTime.Now);
-            command.Validate();
-            Assert.AreEqual(command.Valid, false);
+            Assert.AreEqual(_invalidCommand.Valid, false);
         }
         [TestMethod]
         public void GiveValidImput()
         {
-            var command = new CreateToDoCommands("Exemplo Teste", "DrManhattan", DateTime.Now);
-            command.Validate();
-            Assert.AreEqual(command.Valid, true);
+            Assert.AreEqual(_validCommand.Valid, true);
         }
     }
 }
