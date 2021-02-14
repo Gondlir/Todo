@@ -1,0 +1,12 @@
+c:\Dev\Todo\Todo.Domain\bin\Debug\net5.0\Todo.Domain.deps.json
+c:\Dev\Todo\Todo.Domain\bin\Debug\net5.0\Todo.Domain.dll
+c:\Dev\Todo\Todo.Domain\bin\Debug\net5.0\ref\Todo.Domain.dll
+c:\Dev\Todo\Todo.Domain\bin\Debug\net5.0\Todo.Domain.pdb
+c:\Dev\Todo\Todo.Domain\obj\Debug\net5.0\Todo.Domain.csprojAssemblyReference.cache
+c:\Dev\Todo\Todo.Domain\obj\Debug\net5.0\Todo.Domain.GeneratedMSBuildEditorConfig.editorconfig
+c:\Dev\Todo\Todo.Domain\obj\Debug\net5.0\Todo.Domain.AssemblyInfoInputs.cache
+c:\Dev\Todo\Todo.Domain\obj\Debug\net5.0\Todo.Domain.AssemblyInfo.cs
+c:\Dev\Todo\Todo.Domain\obj\Debug\net5.0\Todo.Domain.csproj.CoreCompileInputs.cache
+c:\Dev\Todo\Todo.Domain\obj\Debug\net5.0\Todo.Domain.dll
+c:\Dev\Todo\Todo.Domain\obj\Debug\net5.0\ref\Todo.Domain.dll
+c:\Dev\Todo\Todo.Domain\obj\Debug\net5.0\Todo.Domain.pdb
