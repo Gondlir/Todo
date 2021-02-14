@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Todo.Domain.Commands;
 using System;
-namespace Todo.Domain.CommandTests
+namespace Todo.Domain.Tests.CommandTests
 {
     [TestClass]
     public class CreateCommandTests
