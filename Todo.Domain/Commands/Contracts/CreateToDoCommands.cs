@@ -1,9 +1,11 @@
 using System;
+using Flunt.Validations;
 using Todo.Domain.Commands.Contracts;
+using Flunt.Notifications;
 
 namespace Todo.Domain.Commands
 {
-    public class CreateToDoCommands : ICommand
+    public class CreateToDoCommands : Notifiable, ICommand
     {
         public CreateToDoCommands() { }
         public CreateToDoCommands(string title, string user, DateTime date)
@@ -19,7 +21,12 @@ namespace Todo.Domain.Commands
 
         public void Validate()
         {
-            throw new NotImplementedException();
+            AddNotifications(
+                new Contract()
+                .Requires()
+                .HasMinLen(Title, 3, "Title", "Tarefa com pouca informação !")
+                .HasMinLen(User, 6, "User", "Usuário inválido")
+                );
         }
     }
 }
