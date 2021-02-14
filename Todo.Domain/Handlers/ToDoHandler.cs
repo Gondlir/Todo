@@ -7,7 +7,7 @@ using Todo.Domain.Repositories;
 
 namespace Todo.Domain.Handlers
 {
-    public class ToDoHandler : Notifiable, IHandler<CreateToDoCommands>, IHandler<UpdateCommand>
+    public class ToDoHandler : Notifiable, IHandler<CreateToDoCommands>
     {
         private readonly IRepository _repository;
 
@@ -17,12 +17,18 @@ namespace Todo.Domain.Handlers
         }
         public ICommandResult Handle(CreateToDoCommands command)
         {
-            throw new System.NotImplementedException();
+            command.Validate();
+            if (command.Invalid)
+                return new GenericCommandResult(false, "Erro, tarefa errada !", command.Notifications);
+
+            var todoapp = new ToDoEntity(command.Title, command.User, command.Date);
+            _repository.Create(todoapp);
+            return new GenericCommandResult(true, "Tarefa Salva !", todoapp);
         }
 
-        public ICommandResult Handle(UpdateCommand command)
-        {
-            throw new System.NotImplementedException();
-        }
+        // public ICommandResult Handle(UpdateCommand command)
+        // {
+        //     throw new System.NotImplementedException();
+        // }
     }
 }
