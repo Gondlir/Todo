@@ -18,7 +18,7 @@ namespace Todo.Domain.Commands
         public void Validate()
         {
             AddNotifications(new Contract().Requires()
-            .HasMinLen(User, 6, "User", "Usuário inválido !"));
+            .HasMinLen(User, 3, "User", "Usuário inválido !"));
         }
     }
 }
